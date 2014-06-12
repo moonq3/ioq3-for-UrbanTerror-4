@@ -18170,46 +18170,6 @@ diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/qcommon/cm_trace.c bumpy-code/code/
  	b = 2.0f * (v1[0] * dir[0] + v1[1] * dir[1]);
  	c = v1[0] * v1[0] + v1[1] * v1[1] - (radius+RADIUS_EPSILON) * (radius+RADIUS_EPSILON);
  
-diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/qcommon/cvar.c bumpy-code/code/qcommon/cvar.c
---- ioq3-for-UrbanTerror-4-bumpy/code/qcommon/cvar.c	2014-06-09 22:09:45.519844518 -0400
-+++ bumpy-code/code/qcommon/cvar.c	2014-06-09 22:14:52.576548867 -0400
-@@ -880,6 +862,36 @@
- 
- /*
- =====================
-+Cvar_CheckRange
-+=====================
-+*/
-+void Cvar_CheckRange( cvar_t *var, float min, float max, qboolean integral )
-+{
-+	var->validate = qtrue;
-+	var->min = min;
-+	var->max = max;
-+	var->integral = integral;
-+
-+	// Force an initial range check
-+	Cvar_Set( var->name, var->string );
-+}
-+
-+/*
-+============
-+Cvar_Alias
-+
-+Backwards compatibility provided by aliased variable names
-+============
-+*/
-+void Cvar_Alias( cvar_t *var, const char *var_name )
-+{
-+	cvar_t *alias = Cvar_Get( var_name, "", 0);
-+	alias->alias = var;
-+}
-+
-+
-+/*
-+=====================
- Cvar_Register
- 
- basically a slightly modified Cvar_Get for the interpreted modules
 diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/qcommon/q_shared.h bumpy-code/code/qcommon/q_shared.h
 --- ioq3-for-UrbanTerror-4-bumpy/code/qcommon/q_shared.h	2014-06-09 22:09:45.522844494 -0400
 +++ bumpy-code/code/qcommon/q_shared.h	2014-06-09 22:14:52.580548838 -0400
