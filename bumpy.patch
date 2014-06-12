@@ -18387,3 +18387,23 @@ diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/qcommon/q_shared.h bumpy-code/code/
  	struct cvar_s *next;
  	struct cvar_s *hashNext;
  } cvar_t;
+--- ioq3-for-UrbanTerror-4-bumpy/code/qcommon/qfiles.h	2014-06-11 22:13:11.815296760 -0400
++++ bumpy-code/code/qcommon/qfiles.h	2014-06-09 22:14:52.588548779 -0400
+@@ -591,6 +553,17 @@
+ 
+ #define drawVert_t_cleared(x) drawVert_t (x) = {{0, 0, 0}, {0, 0}, {0, 0}, {0, 0, 0}, {0, 0, 0, 0}}
+ 
++typedef struct 
++{
++	float position[3];
++	float uv[2];
++	float light_uv[2];
++	float normal[3];
++	float stv[3];
++	float ttv[3];
++	float rgba[4];
++} staticVert_t;
++
+ typedef enum {
+ 	MST_BAD,
+ 	MST_PLANAR,
