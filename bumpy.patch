@@ -15967,27 +15967,6 @@ diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/unix/sdl_glimp.c bumpy-code/code/un
  
    }
  
-diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/unix/sdl_snd.c bumpy-code/code/unix/sdl_snd.c
---- ioq3-for-UrbanTerror-4-bumpy/code/unix/sdl_snd.c	2014-06-09 22:09:45.560844207 -0400
-+++ bumpy-code/code/unix/sdl_snd.c	2014-06-09 22:14:52.661548239 -0400
-@@ -196,17 +196,6 @@
- 
- /*
- ===============
--SNDDMAHD_DevList
--===============
--*/
--qboolean SNDDMAHD_DevList(void)
--{
--	// Not implemented.
--	return qtrue;
--}
--
--/*
--===============
- SNDDMA_Init
- ===============
- */
 diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/unix/unix_main.c bumpy-code/code/unix/unix_main.c
 --- ioq3-for-UrbanTerror-4-bumpy/code/unix/unix_main.c	2014-06-09 22:09:45.564844175 -0400
 +++ bumpy-code/code/unix/unix_main.c	2014-06-09 22:14:52.666548204 -0400
