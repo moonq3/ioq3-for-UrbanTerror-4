@@ -15516,40 +15516,6 @@ diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/renderer/tr_types.h bumpy-code/code
  
  	int						colorBits, depthBits, stencilBits;
  
-@@ -202,33 +215,7 @@
- 	qboolean				smpActive;		// dual processor
- } glconfig_t;
- 
--// FIXME: VM should be OS agnostic .. in theory
--
--/*
--#ifdef Q3_VM
--
--#define _3DFX_DRIVER_NAME	"Voodoo"
--#define OPENGL_DRIVER_NAME	"Default"
--
--#elif defined(_WIN32)
--*/
--
--#if defined(Q3_VM) || defined(_WIN32)
--
--#define _3DFX_DRIVER_NAME	"3dfxvgl"
--#define OPENGL_DRIVER_NAME	"opengl32"
--
--#elif defined(MACOS_X)
--
--#define _3DFX_DRIVER_NAME	"libMesaVoodooGL.dylib"
--#define OPENGL_DRIVER_NAME	"/System/Library/Frameworks/OpenGL.framework/Libraries/libGL.dylib"
--
--#else
- 
--#define _3DFX_DRIVER_NAME	"libMesaVoodooGL.so"
--// https://zerowing.idsoftware.com/bugzilla/show_bug.cgi?id=524
--#define OPENGL_DRIVER_NAME	"libGL.so.1"
- 
--#endif	// !defined _WIN32
- 
- #endif	// __TR_TYPES_H
 diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/renderer/tr_world.c bumpy-code/code/renderer/tr_world.c
 --- ioq3-for-UrbanTerror-4-bumpy/code/renderer/tr_world.c	2014-06-09 22:09:45.531844427 -0400
 +++ bumpy-code/code/renderer/tr_world.c	2014-06-09 22:14:52.609548624 -0400
