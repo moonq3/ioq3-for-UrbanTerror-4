@@ -15507,11 +15507,10 @@ diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/renderer/tr_types.h bumpy-code/code
  } textureCompression_t;
  
  typedef enum {
-@@ -175,7 +188,7 @@
- 	char					extensions_string[BIG_INFO_STRING];
+@@ -176,6 +189,7 @@
  
  	int						maxTextureSize;			// queried from GL
--	int						maxActiveTextures;		// multitexture ability
+	int						maxActiveTextures;		// multitexture ability
 +	int						numTextureUnits;		// multitexture ability
  
  	int						colorBits, depthBits, stencilBits;
