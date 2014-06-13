@@ -15839,53 +15839,6 @@ diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/unix/linux_qgl.c bumpy-code/code/un
  	return qtrue;
  }
  
-diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/unix/linux_snd.c bumpy-code/code/unix/linux_snd.c
---- ioq3-for-UrbanTerror-4-bumpy/code/unix/linux_snd.c	2014-06-09 22:09:45.559844215 -0400
-+++ bumpy-code/code/unix/linux_snd.c	2014-06-09 22:14:52.660548247 -0400
-@@ -73,26 +73,6 @@
-   }
- }
- 
--/*
--===============
--SNDDMAHD_DevList
--===============
--*/
--qboolean SNDDMAHD_DevList(void)
--{
--	// Not implemented.
--	return qtrue;
--}
--
--#ifndef NO_DMAHD
--qboolean dmaHD_Enabled(void);
--#endif
--
--/*
--===============
--SNDDMA_Init
--===============
--*/
- qboolean SNDDMA_Init(void)
- {
- 	int rc;
-@@ -162,16 +142,6 @@
- 	if (dma.channels < 1 || dma.channels > 2)
- 		dma.channels = 2;
- 
--#ifndef NO_DMAHD
--	if (dmaHD_Enabled()) 
--	{
--		// p5yc0runn3r - Fix dmaHD sound to 44KHz, Stereo and 16 bits per sample.
--		dma.speed = 44100;
--		dma.channels = 2;
--		dma.samplebits = 16;
--	}
--#endif
--	
- /*  mmap() call moved forward */
- 
- 	tmp = 0;
 diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/unix/sdl_glimp.c bumpy-code/code/unix/sdl_glimp.c
 --- ioq3-for-UrbanTerror-4-bumpy/code/unix/sdl_glimp.c	2014-06-09 22:09:45.559844215 -0400
 +++ bumpy-code/code/unix/sdl_glimp.c	2014-06-09 22:14:52.661548239 -0400
@@ -18281,16 +18234,6 @@ diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/qcommon/q_shared.h bumpy-code/code/
  
  // portable case insensitive compare
  int		Q_stricmp (const char *s1, const char *s2);
-@@ -691,6 +694,7 @@
- char	*Q_strrchr( const char* string, int c );
- char	*Q_strnchr( const char* string, int c, int n );
- char	*Q_strnrchr( const char *string, int c, int n );
-+const char	*Q_stristr( const char *s, const char *find);
-
- // Fenix: for substring matching
- int Q_strsub (const char *s1, const char *s2);
- int Q_strisub (const char *s1, const char *s2);
- 
 @@ -704,6 +768,8 @@
  int Q_PrintStrlen( const char *string );
  // removes color sequences from string
