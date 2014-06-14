@@ -3526,6 +3526,15 @@ diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/renderer/tr_backend.c bumpy-code/co
  /*
  ** GL_Cull
  */
+@@ -409,7 +732,7 @@
+ }
+ 
+ 
+-static void SetViewportAndScissor( void ) {
++void SetViewportAndScissor( void ) {
+	qglMatrixMode(GL_PROJECTION);
+	qglLoadMatrixf( backEnd.viewParms.projectionMatrix );
+	qglMatrixMode(GL_MODELVIEW);
 @@ -468,6 +791,28 @@
  		qglClearColor( 0.0f, 0.0f, 0.0f, 1.0f );	// FIXME: get color of sky
  #endif
@@ -11217,6 +11226,16 @@ diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/renderer/tr_init.c bumpy-code/code/
 diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/renderer/tr_light.c bumpy-code/code/renderer/tr_light.c
 --- ioq3-for-UrbanTerror-4-bumpy/code/renderer/tr_light.c	2014-06-09 22:09:45.528844448 -0400
 +++ bumpy-code/code/renderer/tr_light.c	2014-06-09 22:14:52.601548683 -0400
+@@ -123,7 +123,8 @@
+ 
+ =================
+ */
+-static void R_SetupEntityLightingGrid( trRefEntity_t *ent ) {
++void R_SetupEntityLightingGrid( trRefEntity_t *ent ) 
++{
+	vec3_t	lightOrigin;
+	int		pos[3];
+	int		i, j;
 @@ -312,18 +313,18 @@
  		R_SetupEntityLightingGrid( ent );
  	} else {
@@ -15195,6 +15214,15 @@ diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/renderer/tr_types.h bumpy-code/code
 diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/renderer/tr_world.c bumpy-code/code/renderer/tr_world.c
 --- ioq3-for-UrbanTerror-4-bumpy/code/renderer/tr_world.c	2014-06-09 22:09:45.531844427 -0400
 +++ bumpy-code/code/renderer/tr_world.c	2014-06-09 22:14:52.609548624 -0400
+@@ -281,7 +281,7 @@
+ R_AddWorldSurface
+ ======================
+ */
+-static void R_AddWorldSurface( msurface_t *surf, int dlightBits ) {
++void R_AddWorldSurface( msurface_t *surf, int dlightBits ) {
+	if ( surf->viewCount == tr.viewCount ) {
+		return;		// already in this view
+	}
 @@ -294,6 +294,8 @@
  		return;
  	}
@@ -15204,6 +15232,15 @@ diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/renderer/tr_world.c bumpy-code/code
  	// check for dlighting
  	if ( dlightBits ) {
  		dlightBits = R_DlightSurface( surf, dlightBits );
+@@ -498,7 +500,7 @@
+ R_PointInLeaf
+ ===============
+ */
+-static mnode_t *R_PointInLeaf( const vec3_t p ) {
++mnode_t *R_PointInLeaf( const vec3_t p ) {
+	mnode_t		*node;
+	float		d;
+	cplane_t	*plane;
 diff -wBur ioq3-for-UrbanTerror-4-bumpy/code/unix/linux_qgl.c bumpy-code/code/unix/linux_qgl.c
 --- ioq3-for-UrbanTerror-4-bumpy/code/unix/linux_qgl.c	2014-06-09 22:09:45.558844223 -0400
 +++ bumpy-code/code/unix/linux_qgl.c	2014-06-09 22:14:52.660548247 -0400
